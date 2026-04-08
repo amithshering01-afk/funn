@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Land of Brainless 😂</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background-color: #111;
+            color: white;
+            padding-top: 60px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            background-color: #ff4da6;
+            color: white;
+            cursor: pointer;
+        }
+
+        #noBtn, #exitBtn {
+            position: absolute;
+        }
+
+        #emoji {
+            font-size: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Welcome to the land of brainless 😈</h1>
+
+<input type="text" id="nameInput" placeholder="Enter your name">
+
+<br>
+<button onclick="enterName()">Continue</button>
+
+<script>
+let userName = "";
+
+// STEP 1
+function enterName() {
+    const name = document.getElementById("nameInput").value.trim();
+
+    if (name === "") {
+        alert("Enter your name first 😏");
+        return;
+    }
+
+    userName = name;
+
+    document.body.innerHTML = `
+        <h2>So ${userName}...</h2>
+        <h2>Enter if you are brainless 😈</h2>
+        <h2>Exit if you are crazy 😏</h2>
+        <br>
+        <button onclick="fakeLoad()">Enter</button>
+        <button id="exitBtn" onmouseover="moveExit()">Exit</button>
+    `;
+}
+
+// FAKE LOADING 😏
+function fakeLoad() {
+    document.body.innerHTML = `
+        <h2>Checking brain status... 🧠</h2>
+        <h3>Please wait 😏</h3>
+    `;
+
+    setTimeout(() => {
+        nextQuestion();
+    }, 2000);
+}
+
+// EXIT BUTTON ESCAPE 😆
+function moveExit() {
+    const btn = document.getElementById("exitBtn");
+
+    const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+}
+
+// STEP 2
+function nextQuestion() {
+    document.body.innerHTML = `
+        <h2 id="question">So ${userName}... are you stupid? 😏</h2>
+        <div id="emoji"></div>
+        <br>
+        <button onclick="yesAnswer()">Yes</button>
+        <button id="noBtn" onmouseover="moveNo()">No</button>
+    `;
+}
+
+// FINAL RESULT 💀
+function yesAnswer() {
+    document.body.innerHTML = `
+        <h1>😂🤣🤣😹🤣🤣</h1>
+        <h2>I knew it from the day you came...</h2>
+        <h2>${userName}, you are officially brainless 😈</h2>
+        <h3>Certified chaos machine 🤡🔥</h3>
+        <h3>Don’t worry… the world needs people like you for entertainment 😏</h3>
+    `;
+}
+
+// NO BUTTON RUN 😆
+const emojis = ["😂","🤣","😹","😆","😜","😝","🤭","😈"];
+
+function moveNo() {
+    const btn = document.getElementById("noBtn");
+
+    const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+
+    document.getElementById("emoji").innerText =
+        emojis[Math.floor(Math.random() * emojis.length)];
+}
+</script>
+
+</body>
+</html>
